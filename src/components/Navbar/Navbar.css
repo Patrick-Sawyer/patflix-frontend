@@ -1,0 +1,19 @@
+.nav-item {
+  display: inline-block !important;
+  padding: 0px 10px;
+  position: relative;
+  top: 1px;
+}
+
+.nav a {
+  color: white;
+}
+
+.nav a:hover {
+  color: white !important;
+  background: inherit !important;
+}
+
+.nav {
+  background: #293241;
+}

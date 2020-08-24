@@ -1,0 +1,22 @@
+.custom-button.btn {
+  background-color: #293241;
+  color: #fff;
+  border: none;
+  position: relative;
+  outline: none;
+  transition: 0.1;
+  padding: 4px 15px 6px 15px;
+  font-size: 16px;
+}
+.custom-button.btn:hover {
+  text-decoration: underline;
+  color: #fff !important;
+}
+
+.custom-button.btn:active {
+  top: 1px;
+}
+
+.custom-button.btn:focus {
+  box-shadow: none;
+}
