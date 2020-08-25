@@ -27,13 +27,11 @@ class App extends Component {
   };
 
   checkLoginStatus = () => {
-    console.log("called");
     axios
       .get("http://localhost:3001/logged_in", {
         withCredentials: true,
       })
       .then((response) => {
-        console.log(response.data);
         if (response.data.logged_in === true) {
           this.setState({
             loggedInStatus: true,
@@ -110,7 +108,17 @@ class App extends Component {
               <Route exact path={"/myvids"} component={MyVids} />
             )}
             {this.state.loggedInStatus && (
-              <Route exact path={"/upload"} component={Upload} />
+              <Route
+                exact
+                path={"/upload"}
+                render={(props) => (
+                  <Upload
+                    {...props}
+                    loggedInStatus={this.state.loggedInStatus}
+                    user={this.state.user}
+                  />
+                )}
+              />
             )}
             {this.state.loggedInStatus && (
               <Route exact path={"/friends"} component={Friends} />
