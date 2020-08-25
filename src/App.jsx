@@ -29,7 +29,7 @@ class App extends Component {
   checkLoginStatus = () => {
     console.log("called");
     axios
-      .get("http://localhost:3001/login", {
+      .get("http://localhost:3001/logged_in", {
         withCredentials: true,
       })
       .then((response) => {
