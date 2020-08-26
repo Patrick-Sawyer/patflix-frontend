@@ -17,16 +17,16 @@ class Navbar extends Component {
       return (
         <div>
           <li className="nav-item">
-            <Link to="/upload">Upload</Link>
+            <Link to="/">Browse</Link>
           </li>
           <li className="nav-item">
             <Link to="/myvids">My Vids</Link>
           </li>
           <li className="nav-item">
-            <Link to="/friends">Friends</Link>
+            <Link to="/upload">Upload</Link>
           </li>
           <li className="nav-item">
-            <Link to="/">Home</Link>
+            <Link to="/friends">Friends</Link>
           </li>
           <li className="nav-item">
             <Link to="/" onClick={this.props.handleLogout}>

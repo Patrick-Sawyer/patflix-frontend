@@ -8,6 +8,7 @@ import MyVids from "./components/MyVids/MyVids";
 import Friends from "./components/Friends/Friends";
 import Signup from "./components/Signup/Signup";
 import Browse from "./components/Browse/Browse";
+import Video from "./components/Video/Video";
 import axios from "axios";
 
 class App extends Component {
@@ -105,7 +106,11 @@ class App extends Component {
               )}
             />
             {this.state.loggedInStatus && (
-              <Route exact path={"/myvids"} component={MyVids} />
+              <Route
+                exact
+                path={"/myvids"}
+                render={(props) => <MyVids {...props} user={this.state.user} />}
+              />
             )}
             {this.state.loggedInStatus && (
               <Route
@@ -118,6 +123,14 @@ class App extends Component {
                     user={this.state.user}
                   />
                 )}
+              />
+            )}
+
+            {this.state.loggedInStatus && (
+              <Route
+                exact
+                path={"/video/:video_id/:uuid/:filename"}
+                render={(props) => <Video {...props} user={this.state.user} />}
               />
             )}
             {this.state.loggedInStatus && (
