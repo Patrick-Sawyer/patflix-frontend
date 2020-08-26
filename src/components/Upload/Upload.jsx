@@ -8,6 +8,7 @@ class Upload extends Component {
     loggedInStatus: this.props.loggedInStatus,
     user: this.props.user,
     video: null,
+    show: true,
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -32,6 +33,9 @@ class Upload extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+    this.setState({
+      show: false,
+    });
     let data = new FormData();
     data.append("video", this.state.video);
     data.append("title", this.state.title);
@@ -39,59 +43,79 @@ class Upload extends Component {
     axios
       .post("http://localhost:3001/upload", data, { withCredentials: true })
       .then((response) => {
-        console.log(response.data);
+        if (response.data.status == "created") {
+          this.props.history.push("/myvids");
+        } else {
+          this.setState({
+            show: true,
+          });
+        }
       })
       .catch((error) => {
-        console.log(error);
+        this.setState({
+          show: true,
+        });
       });
   };
 
   render() {
-    return (
-      <div className="form-container">
-        <form className="form" onSubmit={this.handleSubmit} autoComplete="off">
-          <div className="form-group">
-            <input
-              className="form-control"
-              autoFocus="autofocus"
-              type="text"
-              placeholder="Title"
-              autofill="none"
-              name="title"
-              value={this.state.title}
-              onChange={this.handleChange}
-              required
-            ></input>
-          </div>
-          <div className="form-group">
-            <textarea
-              className="form-control"
-              rows="3"
-              placeholder="Description"
-              autofill="none"
-              name="description"
-              value={this.state.description}
-              onChange={this.handleChange}
-              required
-            ></textarea>
-          </div>
-          <div className="form-group">
-            <input
-              onChange={this.handleChange}
-              className="form-control"
-              type="file"
-              id="video"
-              required
-            />
-          </div>
-          <div className="form-group">
-            <button className="btn btn-lg custom-button" type="submit">
-              Upload
-            </button>
-          </div>
-        </form>
-      </div>
-    );
+    if (this.state.show) {
+      return (
+        <div className="form-container">
+          <form
+            className="form"
+            onSubmit={this.handleSubmit}
+            autoComplete="off"
+          >
+            <div className="form-group">
+              <input
+                className="form-control"
+                autoFocus="autofocus"
+                type="text"
+                placeholder="Title"
+                autofill="none"
+                name="title"
+                value={this.state.title}
+                onChange={this.handleChange}
+                required
+              ></input>
+            </div>
+            <div className="form-group">
+              <textarea
+                className="form-control"
+                rows="3"
+                placeholder="Description"
+                autofill="none"
+                name="description"
+                value={this.state.description}
+                onChange={this.handleChange}
+                required
+              ></textarea>
+            </div>
+            <div className="form-group">
+              <input
+                onChange={this.handleChange}
+                className="form-control"
+                type="file"
+                id="video"
+                required
+              />
+            </div>
+            <div className="form-group">
+              <button className="btn btn-lg custom-button" type="submit">
+                Upload
+              </button>
+            </div>
+          </form>
+        </div>
+      );
+    } else {
+      return (
+        <div className="form-container">
+          <p>Please wait...</p>
+        </div>
+      );
+    }
   }
 }
 

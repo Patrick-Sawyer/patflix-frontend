@@ -31,7 +31,7 @@ class Signup extends Component {
       .then((response) => {
         if (response.data.status === "created") {
           this.props.handleLogin(response.data);
-          this.props.history.push("/");
+          this.props.history.push("/browse");
         } else {
           //error handling
         }

@@ -17,7 +17,7 @@ class Navbar extends Component {
       return (
         <div>
           <li className="nav-item">
-            <Link to="/">Browse</Link>
+            <Link to="/browse">Browse</Link>
           </li>
           <li className="nav-item">
             <Link to="/myvids">My Vids</Link>

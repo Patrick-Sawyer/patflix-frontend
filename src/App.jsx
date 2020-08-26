@@ -76,35 +76,57 @@ class App extends Component {
             handleLogout={this.handleLogout}
           />
           <Switch>
-            <Route
-              exact
-              path={"/signup"}
-              render={(props) => (
-                <Signup
-                  {...props}
-                  handleLogin={this.handleLogin}
-                  loggedInStatus={this.state.loggedInStatus}
-                />
-              )}
-            />
-            <Route
-              exact
-              path={"/"}
-              render={(props) => (
-                <Browse {...props} loggedInStatus={this.state.loggedInStatus} />
-              )}
-            />
-            <Route
-              exact
-              path={"/signin"}
-              render={(props) => (
-                <Signin
-                  {...props}
-                  handleLogin={this.handleLogin}
-                  loggedInStatus={this.state.loggedInStatus}
-                />
-              )}
-            />
+            {!this.state.loggedInStatus && (
+              <Route
+                exact
+                path={"/"}
+                render={(props) => (
+                  <Signin
+                    {...props}
+                    handleLogin={this.handleLogin}
+                    loggedInStatus={this.state.loggedInStatus}
+                  />
+                )}
+              />
+            )}
+            {!this.state.loggedInStatus && (
+              <Route
+                exact
+                path={"/signup"}
+                render={(props) => (
+                  <Signup
+                    {...props}
+                    handleLogin={this.handleLogin}
+                    loggedInStatus={this.state.loggedInStatus}
+                  />
+                )}
+              />
+            )}
+            {!this.state.loggedInStatus && (
+              <Route
+                exact
+                path={"/signin"}
+                render={(props) => (
+                  <Signin
+                    {...props}
+                    handleLogin={this.handleLogin}
+                    loggedInStatus={this.state.loggedInStatus}
+                  />
+                )}
+              />
+            )}
+            {this.state.loggedInStatus && (
+              <Route
+                exact
+                path={"/browse"}
+                render={(props) => (
+                  <Browse
+                    {...props}
+                    loggedInStatus={this.state.loggedInStatus}
+                  />
+                )}
+              />
+            )}
             {this.state.loggedInStatus && (
               <Route
                 exact
@@ -125,7 +147,18 @@ class App extends Component {
                 )}
               />
             )}
-
+            {this.loggedInStatus && (
+              <Route
+                exact
+                path={"/browse"}
+                render={(props) => (
+                  <Browse
+                    {...props}
+                    loggedInStatus={this.state.loggedInStatus}
+                  />
+                )}
+              />
+            )}
             {this.state.loggedInStatus && (
               <Route
                 exact

@@ -34,10 +34,10 @@ class Video extends Component {
   };
   render() {
     return (
-      <div>
+      <div className="form-container">
         <h4>{this.state.title}</h4>
         <p>{this.state.description}</p>
-        <video key={this.state.url}>
+        <video controls>
           <source src={this.state.url} />
         </video>
       </div>
