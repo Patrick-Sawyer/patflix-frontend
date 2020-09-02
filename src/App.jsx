@@ -162,7 +162,7 @@ class App extends Component {
             {this.state.loggedInStatus && (
               <Route
                 exact
-                path={"/video/:video_id/:uuid/:filename"}
+                path={"/video/:video_id"}
                 render={(props) => <Video {...props} user={this.state.user} />}
               />
             )}

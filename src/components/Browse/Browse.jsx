@@ -19,8 +19,8 @@ class Browse extends Component {
       });
   };
 
-  linkToVideo = (url, id) => {
-    this.props.history.push("/video/" + id + "/" + url);
+  linkToVideo = (id) => {
+    this.props.history.push("/video/" + id);
   };
 
   render() {
@@ -28,7 +28,7 @@ class Browse extends Component {
       <div>
         {this.state.videos.map((video, index) => (
           <div
-            onClick={() => this.linkToVideo(video.url, video.id)}
+            onClick={() => this.linkToVideo(video.id)}
             className="video"
             key={index}
           >
