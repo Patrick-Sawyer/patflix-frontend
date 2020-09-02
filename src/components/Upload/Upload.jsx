@@ -43,7 +43,7 @@ class Upload extends Component {
     axios
       .post("http://localhost:3001/upload", data, { withCredentials: true })
       .then((response) => {
-        if (response.data.status == "created") {
+        if (response.data.status === "created") {
           this.props.history.push("/myvids");
         } else {
           this.setState({

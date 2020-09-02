@@ -4,7 +4,7 @@ import axios from "axios";
 class Video extends Component {
   state = {
     url:
-      "https://patflix.s3.eu-west-2.amazonaws.com/" +
+      "https://patflix-bucket.s3.eu-west-1.amazonaws.com/" +
       this.props.match.params.uuid +
       "/" +
       this.props.match.params.filename,
