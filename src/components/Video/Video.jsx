@@ -22,7 +22,7 @@ class Video extends Component {
     let ua = navigator.userAgent.toLowerCase();
     if (ua.indexOf("safari") !== -1 && ua.indexOf("chrome") <= -1) {
       this.setState({
-        manifest: "hls/" + this.state.video_id + "/index.m3u8",
+        directory: "hls/" + this.state.video_id + "/index.m3u8",
         mimeType: "application/x-mpegURL",
       });
     }
