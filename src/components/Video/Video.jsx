@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import ShakaPlayer from "shaka-player-react";
+import ReactPlayer from "react-player";
 
 class Video extends Component {
   state = {
@@ -52,13 +52,13 @@ class Video extends Component {
       <div className="form-container">
         <h4>{this.state.title}</h4>
         <p>{this.state.description}</p>
-        <ShakaPlayer
-          autoPlay
-          src={
-            "https://patflix-bucket.s3.eu-west-1.amazonaws.com/dash/" +
+        <ReactPlayer
+          url={
+            "https://d3s7643g46e4sa.cloudfront.net/dash/" +
             this.state.video_id +
             "/index.mpd"
           }
+          controls={true}
         />
       </div>
     );
