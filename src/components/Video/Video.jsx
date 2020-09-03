@@ -16,12 +16,13 @@ class Video extends Component {
     this.checkIfIOS();
   };
 
-  //this needs testing with apple device / safari etc
+  // this needs checking
 
   checkIfIOS = () => {
-    if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) {
+    let ua = navigator.userAgent.toLowerCase();
+    if (ua.indexOf("safari") !== -1 && ua.indexOf("chrome") <= -1) {
       this.setState({
-        manifest: "hls/" + this.props.match.params.video_id + "index.m3u8",
+        manifest: "hls/" + this.state.video_id + "/index.m3u8",
         mimeType: "application/x-mpegURL",
       });
     }
